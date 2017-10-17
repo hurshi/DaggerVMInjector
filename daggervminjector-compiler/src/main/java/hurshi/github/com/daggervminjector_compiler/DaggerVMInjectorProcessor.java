@@ -1,8 +1,9 @@
 package hurshi.github.com.daggervminjector_compiler;
 
+
 import com.google.auto.common.SuperficialValidation;
 import com.google.auto.service.AutoService;
-import com.sun.source.util.Trees;
+import com.squareup.javapoet.ClassName;
 
 import java.lang.annotation.Annotation;
 import java.util.LinkedHashSet;
@@ -21,13 +22,15 @@ import javax.lang.model.util.Types;
 
 import hurshi.github.com.daggervminjector_annotations.DaggerVMModule;
 
+import static com.google.auto.common.MoreElements.getPackage;
+
 @AutoService(Processor.class)
 public class DaggerVMInjectorProcessor extends AbstractProcessor {
 
     private Elements elementUtils;
     private Types typeUtils;
     private Filer filer;
-    private Trees trees;
+//    private Trees trees;
 
     @Override
     public synchronized void init(ProcessingEnvironment env) {
@@ -35,10 +38,10 @@ public class DaggerVMInjectorProcessor extends AbstractProcessor {
         elementUtils = env.getElementUtils();
         typeUtils = env.getTypeUtils();
         filer = env.getFiler();
-        try {
-            trees = Trees.instance(processingEnv);
-        } catch (IllegalArgumentException ignored) {
-        }
+//        try {
+//            trees = Trees.instance(processingEnv);
+//        } catch (IllegalArgumentException ignored) {
+//        }
     }
 
     @Override
@@ -63,8 +66,12 @@ public class DaggerVMInjectorProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> elementsSet, RoundEnvironment env) {
         for (Element element : env.getElementsAnnotatedWith(DaggerVMModule.class)) {
-            if (!SuperficialValidation.validateElement(element)) continue;
+//            if (!SuperficialValidation.validateElement(element)) continue;
             try {
+                TypeElement typeElement = (TypeElement) element.getEnclosingElement();
+                ClassName className = getSubcomponentClassName(element, typeElement);
+                System.out.println(">>>  package name = " + className.packageName());
+                System.out.println(">>>  simple name = " + className.simpleName());
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -72,6 +79,14 @@ public class DaggerVMInjectorProcessor extends AbstractProcessor {
         }
 
         return false;
+    }
+
+
+    private ClassName getSubcomponentClassName(Element element, TypeElement enclosingElement) {
+        String packageName = getPackage(element).getQualifiedName().toString();
+        String className = enclosingElement.getQualifiedName().toString().substring(
+                packageName.length() + 1).replace('.', '$');
+        return ClassName.get(packageName, className + "Subcomponent");
     }
 
 
