@@ -1,8 +1,14 @@
 apply plugin: 'java-library'
 
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':daggervminjector-annotations')
+    implementation "com.google.auto.service:auto-service:1.0-rc3"
+    implementation "com.google.auto:auto-common:0.8"
+
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+
