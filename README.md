@@ -13,7 +13,7 @@ abstract class DemoActivityInjectModule {
 
 
 @ActivityScope
-@Subcomponent(modules = DemoActivityModule.class)
+@Subcomponent(modules = DemoActivityModule::class)
 public interface DemoActivitySubcomponent extends AndroidInjector<DemoActivity> {
 
     @Subcomponent.Builder
@@ -27,7 +27,7 @@ and I did this for you, you can implementation the same function like this:
 
 ```
 @DaggerVMModule(DemoActivityModule.class) // add this line
-class DemoActivity {
+class DemoActivity : Activity {
 	
 }
 ```
