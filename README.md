@@ -4,7 +4,7 @@ It's tedious to build write code like this ?
 ```
 
 @Module(subcomponents = arrayOf(DemoSubcomponent::class))
-abstract class VMInjectModule {
+abstract class DemoActivityInjectModule {
     @Binds
     @IntoMap
     @DaggerVMKey(DemoActivity::class)
@@ -15,7 +15,7 @@ abstract class VMInjectModule {
 
 @ActivityScope
 @Subcomponent(modules = DemoActivityModule.class)
-public interface SecondVMSubcomponent extends AndroidInjector<DemoActivity> {
+public interface DemoActivitySubcomponent extends AndroidInjector<DemoActivity> {
 
     @Subcomponent.Builder
     abstract class Builder extends AndroidInjector.Builder<DemoActivity> {
