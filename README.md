@@ -1,5 +1,5 @@
 # DaggerVMInjector
-It's tedious to build write code like this ?
+It's tedious to write code like this in dagger?
 
 ```
 
@@ -12,7 +12,6 @@ abstract class DemoActivityInjectModule {
 }
 
 
-
 @ActivityScope
 @Subcomponent(modules = DemoActivityModule.class)
 public interface DemoActivitySubcomponent extends AndroidInjector<DemoActivity> {
@@ -21,7 +20,6 @@ public interface DemoActivitySubcomponent extends AndroidInjector<DemoActivity> 
     abstract class Builder extends AndroidInjector.Builder<DemoActivity> {
     }
 }
-
 
 ```
 
@@ -32,6 +30,5 @@ and I did this for you, you can implementation the same function like this:
 class DemoActivity {
 	
 }
-
 ```
 **How convenient**
