@@ -28,9 +28,15 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
+    implementation 'com.google.dagger:dagger:2.11'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+    implementation 'com.google.dagger:dagger-android:2.11'
+    implementation 'com.google.dagger:dagger-android-support:2.11'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.11'
+    implementation 'com.github.hurshi:dagger-android-extension:0.9.3'
 
-    implementation project(':daggervminjector-compiler')
-    implementation project(':daggervminjector-annotations')
+    implementation project(':compiler')
+    implementation project(':annotation')
 
 
 }

@@ -1,1 +1,1 @@
-include ':app', ':daggervminjector-annotations', ':daggervminjector-compiler'
+include ':app', ':annotation', ':compiler'

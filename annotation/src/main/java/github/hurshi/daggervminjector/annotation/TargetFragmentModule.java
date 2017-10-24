@@ -1,4 +1,4 @@
-package hurshi.github.com.daggervminjector_annotations;
+package github.hurshi.daggervminjector.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +7,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface DaggerVMModule {
+public @interface TargetFragmentModule {
     Class<?> value();
 }

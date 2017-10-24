@@ -1,0 +1,43 @@
+package com.github.hurshi;
+
+import android.app.Activity;
+import android.app.Application;
+
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasActivityInjector;
+import me.hurshi.dagger_android_extension.DaggerVM;
+import me.hurshi.dagger_android_extension.HasDaggerVMInjector;
+
+/**
+ * Created by gavin on 2017/10/24.
+ */
+
+public class App extends Application implements HasActivityInjector, HasDaggerVMInjector {
+
+    @Inject
+    DispatchingAndroidInjector<Activity> activityInjector;
+
+    @Inject
+    DispatchingAndroidInjector<DaggerVM> daggerVmInjector;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        DaggerAppComponent.builder()
+                .build()
+                .inject(this);
+    }
+
+    @Override
+    public AndroidInjector<Activity> activityInjector() {
+        return activityInjector;
+    }
+
+    @Override
+    public AndroidInjector<DaggerVM> daggerVMInjector() {
+        return daggerVmInjector;
+    }
+}
