@@ -1,0 +1,24 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly "com.google.dagger:dagger:2.11"
+    annotationProcessor "com.google.dagger:dagger-compiler:2.11"
+    compileOnly "com.google.dagger:dagger-android:2.11"
+    compileOnly "com.google.dagger:dagger-android-support:2.11"
+    annotationProcessor "com.google.dagger:dagger-android-processor:2.11"
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
