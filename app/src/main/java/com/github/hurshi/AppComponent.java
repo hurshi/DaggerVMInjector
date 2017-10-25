@@ -3,7 +3,7 @@ package com.github.hurshi;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import me.hurshi.dagger_android_extension.AndroidDaggerVMInjectionModule;
+import github.hurshi.daggervminjector.extension.AndroidDaggerVMInjectionModule;
 
 /**
  * Created by gavin on 2017/10/24.

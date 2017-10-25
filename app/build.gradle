@@ -23,6 +23,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly fileTree(dir: 'libs_compileonly', include: ['*.jar'])
+
     implementation 'com.android.support:appcompat-v7:26.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
@@ -39,4 +41,19 @@ dependencies {
     implementation project(':extension')
 
 
+}
+
+task daggerModuleSourceJar(type: Jar) {
+    from fileTree(dir: "${project.projectDir.absolutePath}/build/intermediates/classes/debug", include: '**/_GPDaggerVMInjectModule.class')
+    from fileTree(dir: "${project.projectDir.absolutePath}/build/intermediates/classes/debug", include: '**/*_GpSubcomponent.class')
+    from fileTree(dir: "${project.projectDir.absolutePath}/build/intermediates/classes/debug", include: '**/*_GpSubcomponent$Builder.class')
+
+}
+
+task toCopyJars(type: Copy) {
+    from 'build/libs'
+    into 'libs_compileonly'
+    rename { String fileName ->
+        fileName.replace(".jar", "DaggerInjections.jar")
+    }
 }

@@ -8,8 +8,8 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
-import me.hurshi.dagger_android_extension.DaggerVM;
-import me.hurshi.dagger_android_extension.HasDaggerVMInjector;
+import github.hurshi.daggervminjector.extension.DaggerVM;
+import github.hurshi.daggervminjector.extension.HasDaggerVMInjector;
 
 /**
  * Created by gavin on 2017/10/24.
