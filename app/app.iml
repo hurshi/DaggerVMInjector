@@ -118,6 +118,7 @@
     <orderEntry type="library" name="android.arch.lifecycle:runtime-1.0.0" level="project" />
     <orderEntry type="library" name="com.android.support:appcompat-v7-26.1.0" level="project" />
     <orderEntry type="library" name="com.android.support:support-annotations:26.1.0@jar" level="project" />
+    <orderEntry type="library" name="__local_aars__:/Users/gavin/workspace/dagger-vm-injector/app/libs_compileonly/appDaggerInjections.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="com.google.dagger:dagger:2.11@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-core-utils-26.1.0" level="project" />
     <orderEntry type="library" name="com.android.support:support-core-ui-26.1.0" level="project" />

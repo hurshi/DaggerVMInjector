@@ -66,7 +66,7 @@
 2. 在`module`的`build.gradle`中添加
 
 	```
-	task daggerModuleSourceJar(type: Jar) {
+task daggerModuleSourceJar(type: Jar) {
     	from fileTree(dir: "${project.projectDir.absolutePath}/build/intermediates/classes/debug", include: '**/_GPDaggerVMInjectModule.class')
     	from fileTree(dir: "${project.projectDir.absolutePath}/build/intermediates/classes/debug", include: '**/*_GpSubcomponent.class')
     	from fileTree(dir: "${project.projectDir.absolutePath}/build/intermediates/classes/debug", include: '**/*_GpSubcomponent$Builder.class')
