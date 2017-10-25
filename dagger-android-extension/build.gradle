@@ -1,4 +1,8 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
 
 android {
     compileSdkVersion 26
@@ -19,6 +23,3 @@ dependencies {
     compileOnly "com.google.dagger:dagger-android-support:2.11"
     annotationProcessor "com.google.dagger:dagger-android-processor:2.11"
 }
-
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
