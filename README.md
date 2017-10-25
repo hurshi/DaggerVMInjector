@@ -66,24 +66,24 @@
 2. 在`module`的`build.gradle`中添加
 
 	```
-task daggerModuleSourceJar(type: Jar) {
-    	from fileTree(dir: "${project.projectDir.absolutePath}/build/intermediates/classes/debug", include: '**/_GPDaggerVMInjectModule.class')
-    	from fileTree(dir: "${project.projectDir.absolutePath}/build/intermediates/classes/debug", include: '**/*_GpSubcomponent.class')
-    	from fileTree(dir: "${project.projectDir.absolutePath}/build/intermediates/classes/debug", include: '**/*_GpSubcomponent$Builder.class')
-}
-task toCopyJars(type: Copy) {
-    	from 'build/libs'
-	    into 'libs_compileonly'
-   		rename { String fileName ->
-      		fileName.replace(".jar", "DaggerInjections.jar")
-    	}
-}
-dependencies {
-    	compileOnly fileTree(dir: 'libs_compileonly', include: ['*.jar'])
-    	implementation "com.github.hurshi.dagger-vm-injector:annotation:last_version"
-    	//kapt "com.github.hurshi.dagger-vm-injector:compiler:last_version"
-    	annotationProcessor "com.github.hurshi.dagger-vm-injector:compiler:last_version"
-}
+	task daggerModuleSourceJar(type: Jar) {
+    		from fileTree(dir: "${project.projectDir.absolutePath}/build/intermediates/classes/debug", include: '**/_GPDaggerVMInjectModule.class')
+    		from fileTree(dir: "${project.projectDir.absolutePath}/build/intermediates/classes/debug", include: '**/*_GpSubcomponent.class')
+    		from fileTree(dir: "${project.projectDir.absolutePath}/build/intermediates/classes/debug", include: '**/*_GpSubcomponent$Builder.class')
+	}
+	task toCopyJars(type: Copy) {
+    		from 'build/libs'
+	    		into 'libs_compileonly'
+   			rename { String fileName ->
+      			fileName.replace(".jar", "DaggerInjections.jar")
+    		}
+	}
+	dependencies {
+    		compileOnly fileTree(dir: 'libs_compileonly', include: ['*.jar'])
+    		implementation "com.github.hurshi.dagger-vm-injector:annotation:last_version"
+    		//kapt "com.github.hurshi.dagger-vm-injector:compiler:last_version"
+    		annotationProcessor "com.github.hurshi.dagger-vm-injector:compiler:last_version"
+	}
 
 	```
 3. 项目根目录添加`shells`文件夹,在shells中添加脚本`inject.sh`
