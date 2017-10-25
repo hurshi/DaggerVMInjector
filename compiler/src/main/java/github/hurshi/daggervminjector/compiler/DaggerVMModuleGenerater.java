@@ -24,8 +24,8 @@ public class DaggerVMModuleGenerater {
                 .append("import dagger.Module;\n")
                 .append("import dagger.android.AndroidInjector;\n")
                 .append("import dagger.multibindings.IntoMap;\n")
-                .append("import me.hurshi.dagger_android_extension.DaggerVM;\n")
-                .append("import me.hurshi.dagger_android_extension.DaggerVMKey;\n\n");
+                .append("import github.hurshi.daggervminjector.extension.DaggerVM;\n")
+                .append("import github.hurshi.daggervminjector.extension.DaggerVMKey;\n\n");
 
         builder.append("@Module(subcomponents = {")
                 .append(getSubcomponents())

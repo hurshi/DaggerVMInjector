@@ -6,8 +6,8 @@ import android.util.Log;
 import javax.inject.Inject;
 
 import github.hurshi.daggervminjector.annotation.TargetActivityModule;
-import me.hurshi.dagger_android_extension.AndroidDaggerVMInjection;
-import me.hurshi.dagger_android_extension.DaggerVM;
+import github.hurshi.daggervminjector.extension.AndroidDaggerVMInjection;
+import github.hurshi.daggervminjector.extension.DaggerVM;
 
 /**
  * Created by gavin on 2017/10/24.
