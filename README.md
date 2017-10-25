@@ -1,6 +1,6 @@
 ## Dagger扩展组件
 
-###extension组件
+### extension组件
 ##### 概述
 `dagger.android`提供了注入的便捷方式，但是只能注入到`Activity`,`Fragment`等组件中，对于`MVP`或者`MVVM`框架来说，更加希望能注入到`Presenter`或者`ViewModle`中。`extension`组件扩展了`dagger.android`中的`support`组件，能注入到自定义类中。（因为本人是在`MVVM`中使用，此组件为`MVVM`设计）
 ##### 使用
