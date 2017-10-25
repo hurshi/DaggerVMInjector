@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+group = 'com.github.hurshi.dagger-vm-injector'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_7
+        targetCompatibility = JavaVersion.VERSION_1_7
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly "com.google.dagger:dagger:2.11"
+    annotationProcessor "com.google.dagger:dagger-compiler:2.11"
+    compileOnly "com.google.dagger:dagger-android:2.11"
+    compileOnly "com.google.dagger:dagger-android-support:2.11"
+    annotationProcessor "com.google.dagger:dagger-android-processor:2.11"
+}

@@ -1,1 +1,1 @@
-include ':app', ':annotation', ':compiler', ':dagger-android-extension'
+include ':app', ':annotation', ':compiler', ':extension'
