@@ -102,7 +102,7 @@
 1. 给`viewmodel`绑定`module`
 
 	```
-	@TargetActivityModule(MainModule.class)
+	@BindVMModule(module = MainModule.class, scope = ActivityScope.class)
 	class Test implements DaggerVM{
    		public MainViewModel(Application application){
        		AndroidDaggerVMInjection.inject(application, this);
