@@ -1,1 +1,1 @@
-include ':app', ':annotation', ':compiler', ':extension'
+include ':app', ':annotation', ':compiler', ':extension', ':app_kotlin'

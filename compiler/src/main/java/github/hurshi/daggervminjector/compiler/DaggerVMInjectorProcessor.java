@@ -95,7 +95,9 @@ public class DaggerVMInjectorProcessor extends AbstractProcessor {
                             injectInfo.setScope(value.toString());
                         }
                     }
-                    classNames.add(injectInfo);
+                    if (null != injectInfo.getModule() && null != injectInfo.getScope()) {
+                        classNames.add(injectInfo);
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
