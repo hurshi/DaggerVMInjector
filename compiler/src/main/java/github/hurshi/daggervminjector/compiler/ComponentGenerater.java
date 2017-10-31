@@ -31,10 +31,10 @@ public class ComponentGenerater {
         builder.append("package ").append(packageName).append(";\n\n")
                 .append("import dagger.Subcomponent;\n")
                 .append("import dagger.android.AndroidInjector;\n")
-                .append("import github.hurshi.daggervminjector.annotation.*;\n")
                 .append("\n");
 
-        builder.append(scopeStr)
+        builder.append("@")
+                .append(scopeStr)
                 .append("\n")
                 .append("@Subcomponent(modules = ")
                 .append(moduleClassName)

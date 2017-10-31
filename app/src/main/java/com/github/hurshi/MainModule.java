@@ -1,8 +1,10 @@
 package com.github.hurshi;
 
+import com.github.hurshi.bean.Dog;
+import com.github.hurshi.scopes.ActivityScope;
+
 import dagger.Module;
 import dagger.Provides;
-import github.hurshi.daggervminjector.annotation.ActivityScope;
 
 /**
  * Created by gavin on 2017/10/24.

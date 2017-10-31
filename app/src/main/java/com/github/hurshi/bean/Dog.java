@@ -1,4 +1,4 @@
-package com.github.hurshi;
+package com.github.hurshi.bean;
 
 /**
  * Created by gavin on 2017/10/24.

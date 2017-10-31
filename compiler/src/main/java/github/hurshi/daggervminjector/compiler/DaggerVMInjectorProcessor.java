@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.Writer;
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -27,8 +26,7 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 import javax.tools.JavaFileObject;
 
-import github.hurshi.daggervminjector.annotation.TargetActivityModule;
-import github.hurshi.daggervminjector.annotation.TargetFragmentModule;
+import github.hurshi.daggervminjector.annotation.BindVMModule;
 
 
 @AutoService(Processor.class)
@@ -67,35 +65,37 @@ public class DaggerVMInjectorProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> elementsSet, RoundEnvironment env) {
         List<InjectBean> list = new ArrayList<>();
-        List<InjectBean> activityList = processAnno(env, TargetActivityModule.class, "@ActivityScope");
-        if (null != activityList && activityList.size() > 0) {
-            list.addAll(activityList);
+        List<InjectBean> annoList = processAnno(env, BindVMModule.class);
+        if (null != annoList && annoList.size() > 0) {
+            list.addAll(annoList);
         }
-        List<InjectBean> fragmentList = processAnno(env, TargetFragmentModule.class, "@FragmentScope");
-        if (null != fragmentList && fragmentList.size() > 0) {
-            list.addAll(fragmentList);
+        if (list.size() > 0) {
+            generateDaggerVMMoudle(list);
         }
-        generateDaggerVMMoudle(list);
         return false;
     }
 
-    private List<InjectBean> processAnno(RoundEnvironment env, Class<? extends Annotation> var1, String scopeStr) {
+    private List<InjectBean> processAnno(RoundEnvironment env, Class<? extends Annotation> var1) {
         Set<? extends Element> elements = env.getElementsAnnotatedWith(var1);
 
         if (null == elements || elements.size() <= 0) {
             return null;
         }
-        Map<String, Element> classNames = new LinkedHashMap<>();
+        List<InjectInfo> classNames = new ArrayList<>();
         for (Element element : elements) {
             try {
                 for (AnnotationMirror mirror : element.getAnnotationMirrors()) {
+                    InjectInfo injectInfo = new InjectInfo(element);
                     for (Map.Entry<? extends ExecutableElement, ? extends AnnotationValue> entry : mirror.getElementValues().entrySet()) {
                         String key = entry.getKey().getSimpleName().toString();
                         Object value = entry.getValue().getValue();
-                        if ("value".equals(key)) {
-                            classNames.put(value.toString(), element);
+                        if ("module".equals(key)) {
+                            injectInfo.setModule(value.toString());
+                        } else if ("scope".equals(key)) {
+                            injectInfo.setScope(value.toString());
                         }
                     }
+                    classNames.add(injectInfo);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -104,13 +104,13 @@ public class DaggerVMInjectorProcessor extends AbstractProcessor {
         if (null != classNames && classNames.size() > 0) {
             List<InjectBean> injectBeans = new ArrayList<>();
             Writer writer = null;
-            for (Map.Entry<String, Element> entry : classNames.entrySet()) {
-                TypeElement typeElement = (TypeElement) entry.getValue();
-                ComponentGenerater componentGenerater = new ComponentGenerater(elementUtils, typeElement, entry.getKey(), scopeStr);
+            for (InjectInfo injectInfo : classNames) {
+                TypeElement typeElement = (TypeElement) injectInfo.getElement();
+                ComponentGenerater componentGenerater = new ComponentGenerater(elementUtils, typeElement, injectInfo.getModule(), injectInfo.getScope());
                 injectBeans.add(componentGenerater.injectBean);
                 vmPackageName = componentGenerater.packageName;
                 try {
-                    JavaFileObject file = filer.createSourceFile(componentGenerater.injectBean.getSubcomponentClassName(), entry.getValue());
+                    JavaFileObject file = filer.createSourceFile(componentGenerater.injectBean.getSubcomponentClassName(), injectInfo.getElement());
                     writer = file.openWriter();
                     writer.write(componentGenerater.generateJavaCode());
                     writer.flush();
@@ -154,8 +154,7 @@ public class DaggerVMInjectorProcessor extends AbstractProcessor {
 
     private Set<Class<? extends Annotation>> getSupportedAnnotations() {
         Set<Class<? extends Annotation>> annotations = new LinkedHashSet<>();
-        annotations.add(TargetActivityModule.class);
-        annotations.add(TargetFragmentModule.class);
+        annotations.add(BindVMModule.class);
 
         return annotations;
     }

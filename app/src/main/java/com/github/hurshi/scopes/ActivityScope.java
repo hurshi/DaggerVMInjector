@@ -1,4 +1,4 @@
-package github.hurshi.daggervminjector.annotation;
+package com.github.hurshi.scopes;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
