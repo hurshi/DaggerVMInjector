@@ -38,7 +38,7 @@
    }
 
 	```
-5. 如果你用到`@ ActivityKey `/`@FragmentKey`，都替换成`@DaggerVMKey `
+5. 如果你用到`@ActivityKey `/`@FragmentKey`，都替换成`@DaggerVMKey `
 6. 注入方式：(被注入的类需要`implements DaggerVM`)
 
 	```
