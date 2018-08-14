@@ -36,6 +36,10 @@ public abstract class AndroidDaggerVMInjectionModule {
     abstract Map<Class<? extends DaggerVM>, AndroidInjector.Factory<? extends DaggerVM>>
     daggerVMInjectorFactories();
 
+    @Multibinds
+    abstract Map<String, AndroidInjector.Factory<? extends DaggerVM>>
+    daggerVMInjectorFactoriesWithStringKeys();
+
     private AndroidDaggerVMInjectionModule() {
     }
 }

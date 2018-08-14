@@ -9,6 +9,6 @@ targetCompatibility = JavaVersion.VERSION_1_7
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly "com.google.android:android:4.1.1.4"
-    api "com.android.support:support-annotations:26.1.0"
-    implementation 'com.google.dagger:dagger:2.11'
+    api "com.android.support:support-annotations:27.1.1"
+    implementation 'com.google.dagger:dagger:2.17'
 }

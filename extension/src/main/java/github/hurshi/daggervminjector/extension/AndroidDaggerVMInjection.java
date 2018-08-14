@@ -29,7 +29,7 @@ import static dagger.internal.Preconditions.checkNotNull;
  */
 @Beta
 public final class AndroidDaggerVMInjection {
-    private static final String TAG = "dagger.android.support";
+    private static final String TAG = "dagger.android.daggervm";
 
     public static void inject(Application application, DaggerVM daggerVM) {
         checkNotNull(application, "application");
