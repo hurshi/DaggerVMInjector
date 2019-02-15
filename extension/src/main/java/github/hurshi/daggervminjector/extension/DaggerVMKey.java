@@ -16,5 +16,5 @@ import static java.lang.annotation.ElementType.METHOD;
 @MapKey
 @Target(METHOD)
 public @interface DaggerVMKey {
-    Class<? extends DaggerVM> value();
+    Class<?> value();
 }

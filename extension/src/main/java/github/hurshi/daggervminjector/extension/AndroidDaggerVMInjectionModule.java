@@ -16,13 +16,9 @@
 
 package github.hurshi.daggervminjector.extension;
 
-import java.util.Map;
-
 import dagger.Module;
-import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 import dagger.internal.Beta;
-import dagger.multibindings.Multibinds;
 
 /**
  * Configures bindings to ensure the usability of {@code dagger.android} and {@code
@@ -32,14 +28,6 @@ import dagger.multibindings.Multibinds;
 @Beta
 @Module(includes = AndroidSupportInjectionModule.class)
 public abstract class AndroidDaggerVMInjectionModule {
-    @Multibinds
-    abstract Map<Class<? extends DaggerVM>, AndroidInjector.Factory<? extends DaggerVM>>
-    daggerVMInjectorFactories();
-
-    @Multibinds
-    abstract Map<String, AndroidInjector.Factory<? extends DaggerVM>>
-    daggerVMInjectorFactoriesWithStringKeys();
-
     private AndroidDaggerVMInjectionModule() {
     }
 }

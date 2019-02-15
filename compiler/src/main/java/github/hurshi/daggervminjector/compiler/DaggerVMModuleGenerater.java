@@ -56,7 +56,7 @@ public class DaggerVMModuleGenerater {
                 .append("@DaggerVMKey(")
                 .append(injectBean.getVmClassName())
                 .append(".class)\n")
-                .append("abstract AndroidInjector.Factory<? extends DaggerVM> ")
+                .append("abstract AndroidInjector.Factory<?> ")
                 .append(injectBean.getVmClassName().replace(".", "_"))
                 .append("(")
                 .append(injectBean.getSubcomponentClassName())

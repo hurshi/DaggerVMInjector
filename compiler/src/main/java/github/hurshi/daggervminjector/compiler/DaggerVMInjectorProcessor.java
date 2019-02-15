@@ -1,8 +1,6 @@
 package github.hurshi.daggervminjector.compiler;
 
 
-import com.google.auto.service.AutoService;
-
 import java.io.IOException;
 import java.io.Writer;
 import java.lang.annotation.Annotation;
@@ -15,7 +13,6 @@ import java.util.Set;
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
 import javax.annotation.processing.ProcessingEnvironment;
-import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.AnnotationMirror;
@@ -29,7 +26,7 @@ import javax.tools.JavaFileObject;
 import github.hurshi.daggervminjector.annotation.BindVMModule;
 
 
-@AutoService(Processor.class)
+//@AutoService(Processor.class)
 public class DaggerVMInjectorProcessor extends AbstractProcessor {
 
     private Elements elementUtils;

@@ -5,7 +5,7 @@ group = 'com.github.hurshi.dagger-vm-injector'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "27.0.3"
+    buildToolsVersion "28.0.3"
 
 
     defaultConfig {
@@ -30,9 +30,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    compileOnly "com.google.dagger:dagger:2.17"
-    annotationProcessor "com.google.dagger:dagger-compiler:2.17"
-    compileOnly "com.google.dagger:dagger-android:2.17"
-    compileOnly "com.google.dagger:dagger-android-support:2.17"
-    annotationProcessor "com.google.dagger:dagger-android-processor:2.17"
+    compileOnly "com.google.dagger:dagger:2.21"
+    annotationProcessor "com.google.dagger:dagger-compiler:2.21"
+    compileOnly "com.google.dagger:dagger-android:2.21"
+    compileOnly "com.google.dagger:dagger-android-support:2.21"
+    annotationProcessor "com.google.dagger:dagger-android-processor:2.21"
 }
