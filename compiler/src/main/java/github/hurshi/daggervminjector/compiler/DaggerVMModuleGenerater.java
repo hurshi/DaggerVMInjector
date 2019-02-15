@@ -24,8 +24,7 @@ public class DaggerVMModuleGenerater {
                 .append("import dagger.Module;\n")
                 .append("import dagger.android.AndroidInjector;\n")
                 .append("import dagger.multibindings.IntoMap;\n")
-                .append("import github.hurshi.daggervminjector.extension.DaggerVM;\n")
-                .append("import github.hurshi.daggervminjector.extension.DaggerVMKey;\n\n");
+                .append("import github.hurshi.daggervminjector.extension.DaggerVM;\n");
 
         builder.append("@Module(subcomponents = {")
                 .append(getSubcomponents())
@@ -53,7 +52,7 @@ public class DaggerVMModuleGenerater {
         StringBuilder builder = new StringBuilder();
         builder.append("\n@Binds\n")
                 .append("@IntoMap\n")
-                .append("@DaggerVMKey(")
+                .append("@dagger.multibindings.ClassKey(")
                 .append(injectBean.getVmClassName())
                 .append(".class)\n")
                 .append("abstract AndroidInjector.Factory<?> ")
