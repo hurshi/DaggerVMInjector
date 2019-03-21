@@ -1,4 +1,5 @@
 ## Dagger扩展组件
+已废弃，[查看新版 - SimplifyDagger](https://github.com/hurshi/SimplifyDagger)
 
 ### extension组件
 ##### 概述
